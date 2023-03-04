@@ -6,18 +6,10 @@ C'est ma première API et j'ai utilisé NodeJS.
 
 Pour lancer ce projet:
 
-Rendez-vous dans backend et installer les dépendances:
+Installer les dépendances:
 
-cd backend / && npm i
+"npm install"
 
 Le serveur peut maintenant être lancer sur le port 3000:
 
 nodemon server
-
-Votre serveur est prêt maintenant rendez-vous dans le dossier frontend:
-
-cd frontend
-
-puis lancer le rendu: 
-
-npm start / yarn start
