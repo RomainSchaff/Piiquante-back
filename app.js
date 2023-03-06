@@ -3,15 +3,13 @@ const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config();
 const helmet = require("helmet");
-
 const stuffRoutes = require("./routes/stuff");
 const userRoutes = require("./routes/user");
 
 mongoose
-  .connect(process.env.MongoDB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://RomainS:romaindu26@cluster0.tbqhg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  )
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
