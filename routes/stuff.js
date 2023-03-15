@@ -5,11 +5,12 @@ const stuffControllers = require("../controllers/stuff");
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
 
-router.get("/", auth, stuffControllers.getAllSauces);
-router.post("/", auth, multer, stuffControllers.createSauce);
-router.get("/:id", auth, stuffControllers.getOneSauce);
-router.put("/:id", auth, multer, stuffControllers.modifySauce);
-router.delete("/:id", auth, stuffControllers.deleteSauce);
-router.post("/:id/like", auth, stuffControllers.addLike);
+router.get("/", stuffControllers.getAllSauces);
+router.post("/", multer, stuffControllers.createSauce);
+router.get("/:id", stuffControllers.getOneSauce);
+router.post("/:id/getUserLiked", stuffControllers.getUserLiked);
+router.put("/:id", multer, stuffControllers.modifySauce);
+router.delete("/:id", stuffControllers.deleteSauce);
+router.post("/:id/like", stuffControllers.addLike);
 
 module.exports = router;

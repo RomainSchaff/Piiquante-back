@@ -3,7 +3,7 @@ const fs = require("fs");
 const User = require("../models/User");
 
 exports.createSauce = (req, res, next) => {
-  const sauceObject = JSON.parse(req.body.sauce);
+  const sauceObject = req.body;
   delete sauceObject._id;
   likedArray = [];
   dislikedArray = [];
@@ -65,8 +65,15 @@ exports.getAllSauces = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
+exports.getUserLiked = (req, res, next) => {
+  Sauce.findOne({ _id: req.params.id })
+    .then((sauce) => res.status(200).json(sauce.usersLiked))
+    .catch((error) => res.status(404).json({ error }));
+};
+
 exports.addLike = (req, res, next) => {
   let like = req.body.like;
+  console.log(req.body);
   User.findOne({ _id: req.body.userId })
     .then((user) => {
       Sauce.findOne({ _id: req.params.id }).then((sauce) => {
