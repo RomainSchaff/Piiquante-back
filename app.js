@@ -2,20 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config();
-// const helmet = require("helmet");
+const helmet = require("helmet");
 const stuffRoutes = require("./routes/stuff");
 const userRoutes = require("./routes/user");
 
 mongoose
-  .connect(
-    "mongodb+srv://RomainS:romaindu26@cluster0.tbqhg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MongoDB)
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 const app = express();
 
-// app.use(helmet());
+app.use(helmet());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
