@@ -27,7 +27,11 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
   );
-  next();
+  if ("OPTIONS" === req.method) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
 });
 
 app.use(express.json());
