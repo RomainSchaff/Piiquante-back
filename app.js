@@ -16,15 +16,11 @@ const app = express();
 app.use(helmet());
 
 app.use((req, res, next) => {
-  const allowedOrigins = [
+  res.setHeader(
+    "Access-Control-Allow-Origin",
     "http://localhost:3000",
-    "https://romainschaff.github.io/",
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  res.setHeader("Access-Control-Allow-Origin");
+    "https://romainschaff.github.io/"
+  );
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
