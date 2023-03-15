@@ -18,8 +18,7 @@ app.use(helmet());
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-    "https://romainschaff.github.io/"
+    "http://localhost:3000" || "https://romainschaff.github.io"
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
